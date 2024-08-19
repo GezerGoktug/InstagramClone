@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+
+@layer components {
+  .side-link {
+    @apply flex gap-4 items-center hover:bg-zinc-200 rounded-md px-2 py-4  sm:p-4;
+  }
+}
+
+@tailwind utilities;
+
+@layer utilities {
+  .position-top {
+    @apply top-0 left-0 right-0;
+  }
+  .position-bottom {
+    @apply bottom-0 left-0 right-0;
+  }
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+  .col-center {
+    @apply flex flex-col items-center;
+  }
+  .row-start {
+    @apply flex flex-col justify-start;
+  }
+  .flex-between {
+    @apply flex items-center justify-between;
+  }
+}
+
+body {
+  @apply bg-[#FAFAFA] w-screen min-h-screen;
+}
+
+.gradient-outline {
+  position: relative;
+  display: inline-block;
+}
+
+.gradient-outline:before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(
+    45deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
+  border-radius: 50%;
+  z-index: -1;
+}
+ 
