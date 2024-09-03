@@ -43,6 +43,14 @@ You can change your bio and change your profile photo as well.
 </ul></strong>
 
 
+<img src="https://github.com/user-attachments/assets/9c8bfde5-3fc5-4f10-9c6e-2e8bc8bf33f2" width="300" />
+<img src="https://github.com/user-attachments/assets/189a2a2f-4e37-4151-b780-44cc39b76119" width="300" />
+<img src="https://github.com/user-attachments/assets/7e6973f0-07a5-4b0e-8f39-cf615fe460c6" width="300" />
+<img src="https://github.com/user-attachments/assets/8705cda5-e8bb-4a3c-8157-52a7b8019e5a" width="300" />
+<img src="https://github.com/user-attachments/assets/ead3ea43-000a-40ba-9105-de991aa36470" width="500" />
+<img src="https://github.com/user-attachments/assets/5dacf4ee-35ab-4154-9040-081d28ea0d05" width="500" />
+<img src="https://github.com/user-attachments/assets/962467ec-2c33-4506-9aa1-1b574ae0e20d" width="800" />
+
 
 
 
@@ -89,7 +97,6 @@ VITE_REACT_APP_ID = your_firebase_app_id
 
 ```
 npm start
-
 ```
 
 6.**Show in browser**
