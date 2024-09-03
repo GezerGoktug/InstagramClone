@@ -19,6 +19,7 @@ import {
 } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { ERROR, SUCCESS } from "../../constants/types";
+import getAccountUID from "../../utils/getAccountUID";
 
 class Auth {
   //! Kayıt olma işlemi
@@ -82,7 +83,7 @@ class Auth {
   //! Hesap biography  güncelleme
   static async updateBio(bio) {
     try {
-      await updateDoc(doc(db, "users", auth.currentUser.uid), {
+      await updateDoc(doc(db, "users", getAccountUID()), {
         bio,
       });
 
@@ -92,21 +93,21 @@ class Auth {
     }
   }
   //! Hesap fotoğrafı güncelleme
-  static async updatePhoto(file, uid) {
+  static async updatePhoto(file) {
     try {
       //! Profil fotosunu storage'e kaydetme
-      const storageRef = ref(storage, `profilePictures/${uid}`);
+      const storageRef = ref(storage, `profilePictures/${getAccountUID()}`);
       await uploadBytes(storageRef, file);
       const downloadURL = await getDownloadURL(storageRef);
       await updateProfile(auth.currentUser, {
         photoURL: downloadURL,
       });
-      await updateDoc(doc(db, "users", uid), {
+      await updateDoc(doc(db, "users", getAccountUID()), {
         photoUrl: downloadURL,
       });
       const postsQuery = query(
         collection(db, "posts"),
-        where("userUid", "==", uid)
+        where("userUid", "==", getAccountUID())
       );
       const postsSnapshot = await getDocs(postsQuery);
       //! Firestore'da toplu yazma işlemi

@@ -13,7 +13,7 @@ const RecommendedUsers = () => {
      *! Her kullanıcı yeni birileri takip ettiğinde liste güncellenir.
      */
     const fetchRecommendUsers = async () => {
-      const result = await Database.recommendUsers(user.following, user.uid);
+      const result = await Database.recommendUsers();
       setRecommendUsers(result);
     };
     fetchRecommendUsers();

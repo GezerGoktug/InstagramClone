@@ -14,17 +14,15 @@ const Settings = () => {
     const file = e.target.files[0];
     if (file) {
       setLoading(true);
-      const url = await Auth.updatePhoto(file, user.uid);
-      const newUserInfo = { ...user, photoUrl: url };
-      updateLoggedUser(newUserInfo);
+      const url = await Auth.updatePhoto(file);
+      updateLoggedUser({photoUrl: url});
       setLoading(false);
     }
   };
   //! Biyografi değiştirme işlemi
   const handleBioChange = async () => {
     await Auth.updateBio(bio, null);
-    const newUserInfo = { ...user, bio };
-    updateLoggedUser(newUserInfo);
+    updateLoggedUser({bio});
   };
   return (
     <>

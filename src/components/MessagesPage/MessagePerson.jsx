@@ -1,11 +1,9 @@
 import { useMediaQuery } from "react-responsive";
 import { useNavigate } from "react-router-dom";
 import Database from "../../class/database/database";
-import { useAccount } from "../../redux/auth/hooks";
 import { setChatPerson } from "../../redux/chat/actions";
 
 const MessagePerson = ({ person }) => {
-  const user = useAccount();
   const navigate = useNavigate();
 
   //! Cihazın mobil olup olmadığını belirler
@@ -15,7 +13,7 @@ const MessagePerson = ({ person }) => {
   //! eğer yoksa bir oda oluşturur ve state güncellenir,
   //! eğer varsa da gelen veriden oda id si alınıp state  güncellenir
   const clickMessagePerson = async () => {
-    const roomID = await Database.getMessageRoom(person.uid, user.uid);
+    const roomID = await Database.getMessageRoom(person.uid);
     setChatPerson({
       person: {
         uid: person.uid,

@@ -3,12 +3,10 @@ import { FaEdit } from "react-icons/fa";
 import { FaTrash } from "react-icons/fa6";
 import { HiOutlineDotsHorizontal } from "react-icons/hi";
 import Database from "../../class/database/database";
-import { useAccount } from "../../redux/auth/hooks";
 
 const EditPostDropdown = ({ id, isDoEdit }) => {
-  const user = useAccount();
   //! Gönderi silme
-  const deletePost = async () => await Database.deletePost(id, user.uid);
+  const deletePost = async () => await Database.deletePost(id);
   return (
     <>
       <Menu>

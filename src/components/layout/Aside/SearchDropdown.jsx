@@ -3,7 +3,6 @@ import { Menu, MenuButton, MenuItems } from "@headlessui/react";
 import SearchInput from "../../UI/SearchInput";
 import SmallUserProfileItem from "../../UI/SmallUserProfileItem";
 import Database from "../../../class/database/database";
-import { useAccount } from "../../../redux/auth/hooks";
 
 const SearchDropdown = ({
   onClick,
@@ -12,14 +11,11 @@ const SearchDropdown = ({
   isOpenSideBarDropdown,
   isSmall,
 }) => {
-  const user = useAccount();
   const [text, setText] = useState("");
-
   const [searchResult, setSearchResult] = useState([]);
   //! Arama işlemi
   const searchHandle = async () => {
-    const result = await Database.searchUsers(user.uid, text);
-
+    const result = await Database.searchUsers(text);
     setSearchResult(result);
   };
 

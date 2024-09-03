@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
 import Database from "../../class/database/database";
-import { useAccount } from "../../redux/auth/hooks";
+
 
 const MyPosts = () => {
-  const  user = useAccount();
   const [myPosts, setMyPosts] = useState([]);
   //! Paylaştığımız postların bilgilerini alıyoruz.
   useEffect(() => {
     const fetchUserPosts = async () => {
-      const userPosts = await Database.getMyPosts(user?.uid);
+      const userPosts = await Database.getMyPosts();
       setMyPosts(userPosts);
     };
     fetchUserPosts();

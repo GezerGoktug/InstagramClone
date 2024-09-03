@@ -9,23 +9,21 @@ import { useEffect, useRef, useState } from "react";
 import Loader from "../UI/Loader";
 import Database from "../../class/database/database";
 import useChat from "../../hooks/useChat";
-import { useAccount } from "../../redux/auth/hooks";
 import { useChatPerson, useRoomID } from "../../redux/chat/hooks";
 
 const Chat = ({ isPage }) => {
   const chatPerson = useChatPerson();
   const roomID = useRoomID();
-  const user = useAccount();
   const [message, setMessage] = useState("");
   const [file, setFile] = useState(null);
   const [messageLoading, setMessageLoading] = useState(false);
 
-  const { loading, messages } = useChat(roomID)
+  const { loading, messages } = useChat(roomID);
   const messagesEndRef = useRef(null);
 
   //! Kaydırma çubuğunu en aşağı indir
   const scrollToBottom = () => {
-    if (messagesEndRef.current) 
+    if (messagesEndRef.current)
       messagesEndRef.current.scrollIntoView({ behavior: "auto" });
   };
 
@@ -39,14 +37,14 @@ const Chat = ({ isPage }) => {
   const handleMessage = async () => {
     if (!(!(message.trim() === "") || file)) return;
     try {
-      setMessageLoading(true)
-      await Database.sendMessage(message,file,roomID,user.uid)
+      setMessageLoading(true);
+      await Database.sendMessage(message, file, roomID);
       setMessage("");
       setFile(null);
     } catch (error) {
       console.log(error.message);
     } finally {
-      setMessageLoading(false)
+      setMessageLoading(false);
     }
   };
 
@@ -62,7 +60,7 @@ const Chat = ({ isPage }) => {
           isPage ? "w-full" : "hidden"
         } md:block relative h-screen `}
       >
-        <div className="fixed md:absolute bg-white  position-top h-[60px] md:h-[80px] px-4 border-b flex-between  border-slate-300">
+        <div className="sticky bg-white  position-top h-[60px] md:h-[80px] px-4 border-b flex-between  border-slate-300">
           <div className="flex gap-4 items-start">
             {isPage && (
               <Link to="/inbox">
@@ -82,7 +80,7 @@ const Chat = ({ isPage }) => {
             <IoInformationCircleOutline />
           </div>
         </div>
-        <div className="fixed flex items-center gap-3 md:absolute z-10 bg-white position-bottom py-4 px-4 ">
+        <form className="fixed flex items-center gap-3 md:absolute z-10 bg-white position-bottom py-4 px-4 ">
           <div className="flex items-center w-full gap-4 border border-slate-300 rounded-full py-2 px-4 ">
             <input
               value={message}
@@ -101,12 +99,11 @@ const Chat = ({ isPage }) => {
             </div>
           </div>
           <HiArrowRight
-          
             onClick={handleMessage}
             className="p-2  cursor-pointer   size-[40px]  bg-blue-600 text-white rounded-full"
           />
-        </div>
-        <div className=" pt-20 md:pt-24  overflow-y-auto  max-h-[85vh] px-4  ">
+        </form>
+        <div className=" pt-8 pb-16 overflow-y-auto  max-h-[85vh] px-4  ">
           <div className="flex flex-col gap-4">
             {messages.map((message, index) => (
               <Message message={message} key={index} />

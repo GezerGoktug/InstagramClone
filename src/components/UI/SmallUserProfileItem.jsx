@@ -12,11 +12,17 @@ const SmallUserProfileItem = ({ user: UserItem }) => {
   }, [user.following]);
 
   //! Kullanıcı takip etme işlemleri
-  //! isFollowing state'ine göre kullanıcı takip edilir ya da takipten 
+  //! isFollowing state'ine göre kullanıcı takip edilir ya da takipten
   //! çıkarılır
   const followHandle = async () => {
-   const result = await Database.followUser(user,UserItem,isFollowing)
-   updateLoggedUser(result); 
+    await Database.followUser(UserItem, isFollowing);
+    //! Güncellenmiş kullanıcı verilerini hazırlar
+    const updatedFollowing = {
+      following: isFollowing
+        ? user.following.filter((uid) => uid !== UserItem.uid)
+        : [...user.following, UserItem.uid],
+    };
+    updateLoggedUser(updatedFollowing);
   };
   return (
     <div className="flex-between">

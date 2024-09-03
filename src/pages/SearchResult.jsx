@@ -3,16 +3,14 @@ import { useParams } from "react-router-dom";
 import SmallUserProfileItem from "../components/UI/SmallUserProfileItem";
 import { useEffect } from "react";
 import Database from "../class/database/database";
-import { useAccount } from "../redux/auth/hooks";
 
 const SearchResult = () => {
   const { text } = useParams();
-  const user = useAccount();
   const [searchResult, setSearchResult] = useState([]);
   useEffect(() => {
     //! Arama sonuçlarını getirir
     const fetchSearchResult = async () => {
-      const result = await Database.searchUsers(user.uid,text);
+      const result = await Database.searchUsers(text);
       setSearchResult(result);
     };
     fetchSearchResult();

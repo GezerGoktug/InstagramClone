@@ -3,15 +3,14 @@ import { useFormik } from "formik";
 import { FaSpinner } from "react-icons/fa";
 import Database from "../../../class/database/database";
 import Modal from "../../UI/Modal";
-import { useAccount } from "../../../redux/auth/hooks";
 import { closeModal } from "../../../redux/modal/actions";
 
 const CreatePost = () => {
-  const user = useAccount();
+
   //! Gönderi yükleme
   const onSubmit = async (values) => {
     const { file, content } = values;
-    await Database.createPost(user, file, content);
+    await Database.createPost( file, content);
     closeModal();
   };
   const { handleChange, setFieldValue, values, handleSubmit, isSubmitting } =

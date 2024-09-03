@@ -10,7 +10,7 @@ const MyInfo = () => {
   //! Diğer kullanıcı bilgilerimizi alıyoruz
   useEffect(() => {
     const fetchUserOthersInfo = async () => {
-      const userInfos = await Database.getMyProfileInfo(user?.uid);
+      const userInfos = await Database.getMyProfileInfo();
       setInfos(userInfos);
     };
     fetchUserOthersInfo();

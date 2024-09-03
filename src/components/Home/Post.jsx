@@ -18,7 +18,7 @@ const Post = ({ post }) => {
   }, [post.likes]);
 
   const handleLike = async () =>
-    await Database.postLiked(post.id, user.uid, isLiked);
+    await Database.postLiked(post.id, isLiked);
 
   return (
     <div className="flex flex-col gap-3">

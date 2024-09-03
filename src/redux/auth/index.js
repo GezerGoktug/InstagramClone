@@ -21,7 +21,9 @@ const authSlice = createSlice({
     },
     //! Kullanıcı bilgilerini güncelleme işlemi
     __update(state, action) {
-      state.user = action.payload;
+      console.log(action.payload);
+      
+      state.user = {...state.user, ...action.payload};
     },
   },
 });

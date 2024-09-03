@@ -1,13 +1,11 @@
-import { useAccount } from "../../redux/auth/hooks";
+import getAccountUID from "../../utils/getAccountUID";
 
 const Message = ({ message }) => {
-  const user = useAccount();
-
   return (
-    <div className={`${message.senderuid === user.uid && "ms-auto"}`}>
+    <div className={`${message.senderuid === getAccountUID() && "ms-auto"}`}>
       <div
         className={`${
-          message.senderuid === user.uid && "bg-blue-600 text-white"
+          message.senderuid === getAccountUID() && "bg-blue-600 text-white"
         } w-max text-sm xs:text-base max-w-[250px] xs:max-w-[400px]  whitespace-pre-line  border border-slate-300 rounded-lg`}
       >
         {message.photoUrl && (
