@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
-import Navbar from "../../components/layout/Navbar";
-import Aside from "../../components/layout/Aside/Aside";
+import Navbar from "../components/layout/Navbar";
+import Aside from "../components/layout/Aside/Aside";
 
 
 const Layout = ({ showAside, asideProps, navbarProps }) => {

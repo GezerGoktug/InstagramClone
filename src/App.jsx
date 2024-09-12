@@ -9,7 +9,7 @@ import Settings from "./pages/Settings";
 import ErrorPage from "./pages/ErrorPage";
 import SearchResult from "./pages/SearchResult";
 import { Toaster } from "react-hot-toast";
-import Layout from "./pages/layouts/Layout";
+import Layout from "./layouts/Layout";
 import { useSessionStatus } from "./redux/auth/hooks";
 
 //! Kullanıcı giriş yapmadığı sürece sayfalara ulaşamaz
