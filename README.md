@@ -96,7 +96,7 @@ VITE_REACT_APP_ID = your_firebase_app_id
 5.**Start the application**
 
 ```
-npm start
+npm run dev
 ```
 
 6.**Show in browser**
